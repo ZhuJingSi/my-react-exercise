@@ -1,30 +1,12 @@
 import React, { Component } from 'react';
+import { Provider, connect } from 'react-redux';
+import store from './initialState';
 import axios from 'axios';
-import Province from './components/province';
-import City from './components/city';
-import Country from './components/country';
+import Province from './connect/province';
+import City from './connect/city';
+import Country from './connect/country';
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      provinceList: [],
-      cityList: [],
-      countryList: [],
-      province: {
-        key: '',
-        name: '',
-      },
-      city: {
-        key: '',
-        name: '',
-      },
-      country: {
-        key: '',
-        name: '',
-      }
-    };
-  }
   componentWillMount() {
     axios.get('http://www1.pcauto.com.cn/zt/pcauto20160111/areaData/proCityCountry.js')
     .then(res => {
@@ -37,40 +19,21 @@ export default class App extends Component {
       console.log(eval(provinceList))
       console.log(eval(cityList))
       console.log(eval(countryList))
-      this.setState({
-        provinceList,
-        cityList,
-        countryList,
-      })
+      store.dispatch({ type: 'PROVINCEList', payload: provinceList });
+      store.dispatch({ type: 'CITYList', payload: cityList });
+      store.dispatch({ type: 'COUNTYRList', payload: countryList });
     })
-  }
-
-  changeProvince(province) {
-    this.setState({
-      province,
-    })
-    console.log(`已选择 ${province.name}`)
-  }
-  changeCity(city) {
-    this.setState({
-      city,
-    })
-    console.log(`已选择 ${city.name}`)
-  }
-  changeCountry(country) {
-    this.setState({
-      country,
-    })
-    console.log(`已选择 ${country.name}`)
   }
 
   render() {
     return (
-      <div>
-        <Province provinceList={this.state.provinceList} onChange={this.changeProvince.bind(this)} />
-        <City cityList={this.state.cityList} currentPro={this.state.province.key} onChange={this.changeCity.bind(this)} />
-        <Country countryList={this.state.countryList} currentCity={this.state.city.key} onChange={this.changeCountry.bind(this)} />
-      </div>
+      <Provider store={store}>
+        <div>
+          <Province />
+          <City />
+          <Country />
+        </div>
+      </Provider>
     );
   }
 }

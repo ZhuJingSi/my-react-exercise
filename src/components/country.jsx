@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 
 export default class Province extends Component {
-  constructor() {
-    super();
-  }
   change(event) {
     const selected = this.props.countryList.find(res => res.cyk == event.target.value);
-    this.props.onChange({
+
+    this.props.changeCountry({
       key: selected.cyk,
       name: selected.cyv,
     })
   }
+  
   render() {
     const countryList = this.props.countryList.filter(res => res.ck == this.props.currentCity);
+
     return (
       <div>
         <select onChange={this.change.bind(this)}>

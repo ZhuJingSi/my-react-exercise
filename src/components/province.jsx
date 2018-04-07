@@ -6,9 +6,17 @@ export default class Province extends Component {
   }
   change(event) {
     const selected = this.props.provinceList.find(res => res.pk == event.target.value);
-    this.props.onChange({
+    this.props.changeProvince({
       key: selected.pk,
       name: selected.pv,
+    });
+    this.props.changeCity({
+      key: '',
+      name: '',
+    });
+    this.props.changeCountry({
+      key: '',
+      name: '',
     })
   }
   render() {
