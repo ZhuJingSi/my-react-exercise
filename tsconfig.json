@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "target": "es6",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "outDir": "built",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "Shared": ["src/components/Shared/*"],
+      "utils/*": ["src/utils/*"],
+      "pages/*": ["src/pages/*"],
+      "src/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "layouts/*": ["src/layouts/*"],
+      "services/*": ["src/services/*"],
+      "styles/*": ["src/styles/*"]
+    },
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "forkChecker": true,
+    "useCache": true
+  },
+  "exclude": [
+    "node_modules",
+    "built",
+    "./src/services"
+  ]
+}
