@@ -1,0 +1,11 @@
+{
+  "tslint.enable": false,
+  "extends": ["tslint:latest", "tslint-react"],
+  "rules": {
+    "quotemark": [true, "single"],
+    "no-console": [true, "warn"]
+  },
+  "compilerOptions": {
+    "jsx": "react"
+  }
+}
