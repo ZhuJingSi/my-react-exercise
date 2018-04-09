@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 export default class Province extends Component {
-  constructor() {
-    super();
-  }
   change(event) {
     const selected = this.props.provinceList.find(res => res.pk == event.target.value);
     this.props.onChange({

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Province extends Component {
+export default class Country extends Component {
   constructor() {
     super();
   }

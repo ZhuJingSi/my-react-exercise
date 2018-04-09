@@ -51,20 +51,17 @@ export default class App extends Component {
     })
     this.changeCity({ key: '', name: '' })
     this.changeCountry({ key: '', name: '' })
-    console.log(`已选择 ${province.name}`)
   }
   changeCity(city) {
     this.setState({
       city,
     })
     this.changeCountry({ key: '', name: '' })
-    console.log(`已选择 ${city.name}`)
   }
   changeCountry(country) {
     this.setState({
       country,
     })
-    console.log(`已选择 ${country.name}`)
   }
 
   render() {

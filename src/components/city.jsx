@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Province extends Component {
-  constructor() {
-    super();
-  }
+export default class City extends Component {
   change(event) {
     const selected = this.props.cityList.find(res => res.ck == event.target.value);
     this.props.onChange({
