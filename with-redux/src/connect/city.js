@@ -13,7 +13,6 @@ const mapStateToPropsCity = (state, ownProps) => {
 const mapDispatchToPropsCity = (dispatch, ownProps) => {
   return bindActionCreators({
     changeCity: payload => ({ type: 'CITY', payload }),
-    changeCountry: payload => ({ type: 'COUNTRY', payload }),
   }, dispatch)
 }
 

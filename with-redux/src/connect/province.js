@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Province from '../components/province';
+import getData from '../request';
 
 const mapStateToPropsProvince = (state, ownProps) => {
   return {
@@ -12,9 +13,14 @@ const mapStateToPropsProvince = (state, ownProps) => {
 const mapDispatchToPropsProvince = (dispatch, ownProps) => {
   return bindActionCreators({
     changeProvince: payload => ({ type: 'PROVINCE', payload }),
-    changeCity: payload => ({ type: 'CITY', payload }),
-    changeCountry: payload => ({ type: 'COUNTRY', payload }),
   }, dispatch)
 }
 
-export default connect(mapStateToPropsProvince, mapDispatchToPropsProvince)(Province)
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  if (!stateProps.provinceList || !stateProps.provinceList.length) {
+    getData();
+  }
+  return Object.assign(stateProps, dispatchProps, ownProps)
+}
+
+export default connect(mapStateToPropsProvince, mapDispatchToPropsProvince, mergeProps)(Province)

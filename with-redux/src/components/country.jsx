@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class Province extends Component {
-  change(event) {
+  change = event => {
     const selected = this.props.countryList.find(res => res.cyk == event.target.value);
 
     this.props.changeCountry({
@@ -15,7 +15,7 @@ export default class Province extends Component {
 
     return (
       <div>
-        <select onChange={this.change.bind(this)}>
+        <select onChange={this.change}>
           <option key='' value=''>请选择县/区</option>
           { countryList.map(res => {
             return <option key={res.cyk} value={res.cyk}>{res.cyv}</option>
